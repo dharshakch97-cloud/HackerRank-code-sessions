@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 import java.text.DecimalFormat;
 
-public class Main {
+public class Solution {
     
     public static class Point implements Comparable<Point> 
     {
@@ -70,7 +70,7 @@ public class Main {
         while(t-->0)
         {
             int n = sc.nextInt();
-            if (n <= 0) {
+            if (n == 0) {
                 int count = 1;
                 if(!first)
                     sb.append("\n");
