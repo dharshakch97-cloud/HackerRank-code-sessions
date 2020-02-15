@@ -3,7 +3,7 @@ import java.util.*;
 
 class Solution {
 
-    char [][] tct = new char [3][3];
+    char [][] tct = new char [3][];
 
     public static void main (String [] args) throws IOException {
         Solution s = new Solution();
@@ -19,13 +19,16 @@ class Solution {
                 if (s.tct[j][k] == 'X') X++; 
                 else if (s.tct[j][k] == 'O') O++;
             
+            // System.out.println(X + " " + O);
             boolean checkWin;
-            if(X == O) 
+            if(X == O && (X < 3 || O < 3))
+                checkWin = true;
+            else if (X - 1 == O) 
                 checkWin = s.checkCharXO('X');
-            else if(X - 1 == O) 
+            else if (X == O) 
                 checkWin = s.checkCharXO('O');
             else checkWin = false;
-    
+            
             if(checkWin == true)
                 System.out.println("yes");
             else
@@ -35,14 +38,14 @@ class Solution {
     }
     
     public boolean checkCharXO(char ch) {
-        if (tct[0][0] == ch && tct[0][1] == ch &&  tct[0][2] == ch) return false;
-        if (tct[1][0] == ch && tct[1][1] == ch &&  tct[1][2] == ch) return false;
-        if (tct[2][0] == ch && tct[2][1] == ch &&  tct[2][2] == ch) return false;
-        if (tct[0][0] == ch && tct[1][0] == ch &&  tct[2][0] == ch) return false;
-        if (tct[0][1] == ch && tct[1][1] == ch &&  tct[2][1] == ch) return false;
-        if (tct[0][2] == ch && tct[1][2] == ch &&  tct[2][2] == ch) return false;
-        if (tct[0][0] == ch && tct[1][1] == ch &&  tct[2][2] == ch) return false;
-        if (tct[0][2] == ch && tct[1][1] == ch &&  tct[2][0] == ch) return false;
-        return true;
+        if (tct[0][0] == ch && tct[0][1] == ch &&  tct[0][2] == ch) return true;
+        if (tct[1][0] == ch && tct[1][1] == ch &&  tct[1][2] == ch) return true;
+        if (tct[2][0] == ch && tct[2][1] == ch &&  tct[2][2] == ch) return true;
+        if (tct[0][0] == ch && tct[1][0] == ch &&  tct[2][0] == ch) return true;
+        if (tct[0][1] == ch && tct[1][1] == ch &&  tct[2][1] == ch) return true;
+        if (tct[0][2] == ch && tct[1][2] == ch &&  tct[2][2] == ch) return true;
+        if (tct[0][0] == ch && tct[1][1] == ch &&  tct[2][2] == ch) return true;
+        if (tct[0][2] == ch && tct[1][1] == ch &&  tct[2][0] == ch) return true;
+        return false;
     }
 }
